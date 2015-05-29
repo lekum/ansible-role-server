@@ -1,0 +1,7 @@
+---
+- { include: apt-packages.yml, tags: apt-packages }
+- { include: pip-packages.yml, tags: pip-packages }
+- { include: dotfiles.yml, tags: dotfiles }
+- { include: ad-hoc.yml, tags: ad-hoc }
+- { include: vim.yml, tags: vim }
+- { include: geotoad.yml, tags: geotoad }

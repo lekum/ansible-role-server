@@ -1,0 +1,19 @@
+---
+- name: Copy the files
+  copy: src=dotfiles/files/ dest=~/
+
+- name: Copy the appendixes folder
+  copy: src=dotfiles/appendixes/ dest=~/appendixes/
+  changed_when: None
+
+- name: Append to files
+  shell: >
+      cp {{ item|basename }} {{ item|basename }}.bak && cat appendixes/{{ item|basename }} >> {{ item|basename }}
+      chdir=~/
+      creates={{ item|basename }}.bak
+  with_fileglob:
+      - dotfiles/appendixes/.*
+
+- name: Remove the appendixes folder
+  file: path=~/appendixes/ state=absent
+  changed_when: None

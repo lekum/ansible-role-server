@@ -1,0 +1,38 @@
+---
+# apt-packages
+
+additional_repos: []
+
+additional_keys: []
+
+package_list:
+    - aptitude
+    - git
+    - python3
+    - python-dev
+    - python3-dev
+    - python-pip
+    - python3-pip
+    - vim
+    - mosh
+    # For geotoad
+    - ruby
+    - libruby
+
+# pip-packages
+
+global:
+    - pip
+    - virtualenvwrapper
+
+virtualenvs_python2:
+    - name: ansible
+      packages:
+          - ansible
+          - httplib2
+          - boto
+          - docker-py
+
+# geotoad
+
+geotoad_deb_path: ~/Descargas/geotoad_3.23.0-1_all.deb

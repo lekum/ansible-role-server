@@ -1,0 +1,19 @@
+---
+- name: Copy the geotoad .deb to /tmp
+  copy: src={{ geotoad_deb_path }} dest=/tmp/geotoad.deb
+
+- name: Install the geotoad.deb
+  apt: deb=/tmp/geotoad.deb
+  sudo: yes
+
+- name: Ensure the .deb is erased
+  file: path=/tmp/geotoad.deb state=absent
+
+- name: Ensure that the geotoad folders exist
+  file: path={{ item }} state=directory
+  with_items:
+    - ~/Software/geotoad/scripts
+    - ~/Software/geotoad/gpx
+
+- name: Copy the script template to the scripts folder
+  copy: src=geotoad/script_template.sh dest=~/Software/geotoad/scripts/ mode=u+x

@@ -1,0 +1,3 @@
+---
+- name: Create the ~/Software dir
+  file: path=~/Software state=directory

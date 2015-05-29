@@ -1,0 +1,26 @@
+---
+- name: Add the additional repos
+  apt_repository: repo='{{ item }}'
+  sudo: yes
+  with_items: additional_repos
+
+- name: Add the additional keyserver keys
+  apt_key: keyserver={{ item.keyserver }} id={{ item.key_id }}
+  sudo: yes
+  when: "'keyserver' in item"
+  with_items: additional_keys
+
+- name: Add the additional url keys
+  apt_key: url={{ item.url }} id={{ item.key_id }}
+  sudo: yes
+  when: "'url' in item"
+  with_items: additional_keys
+
+- name: Install the apt-packages
+  apt: name={{ item }} state=latest update_cache=yes
+  sudo: yes
+  with_items: package_list
+
+- name: Perform a dist-upgrade
+  apt: upgrade=dist
+  sudo: yes

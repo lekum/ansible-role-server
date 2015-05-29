@@ -1,0 +1,14 @@
+---
+- name: Install the global pip packages
+  pip: name={{ item }} state=latest
+  sudo: yes
+  with_items: global
+
+- name: Make sure ~/.virtualenvs/ exists
+  file: path=~/.virtualenvs state=directory
+
+- name: Install the virtualenvs (python2) pip packages
+  pip: name={{ item.1 }} state=latest virtualenv=~/.virtualenvs/{{ item.0.name }}
+  with_subelements:
+      - virtualenvs_python2
+      - packages

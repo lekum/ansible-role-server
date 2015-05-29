@@ -1,0 +1,6 @@
+---
+- name: Create the .vim/bundle directory
+  file: path=~/.vim/bundle state=directory
+
+- name: Clone the Vundle plugin
+  git: repo=https://github.com/gmarik/Vundle.vim.git dest=~/.vim/bundle/Vundle.vim
