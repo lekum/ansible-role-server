@@ -17,5 +17,5 @@ if [ -s $path_to_gpx ]
         echo "Removing $path_to_gpx..."
         rm $path_to_gpx
     fi
-echo "geotoad.rb --delimiter='|' --distanceMax=$distance_miles --output=$path_to_gpx --queryType=location --notFoundByMe '$coords'"
-geotoad.rb --delimiter='|' --distanceMax=$distance_miles --output=$path_to_gpx --queryType=location --notFoundByMe "$coords"
+echo "geotoad --delimiter='|' --distanceMax=$distance_miles --output=$path_to_gpx --queryType=location --notFoundByMe '$coords'"
+geotoad --delimiter='|' --distanceMax=$distance_miles --output=$path_to_gpx --queryType=location --notFoundByMe "$coords"
