@@ -15,6 +15,7 @@ package_list:
     - python3-pip
     - vim
     - mosh
+    - tmux
     # For geotoad
     - ruby
     - libruby
